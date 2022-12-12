@@ -2,24 +2,24 @@ using MediatR;
 using PlainsAndDepressions.Control.Services.Commands;
 using PlainsAndDepressions.Control.Services.Handlers;
 using PlainsAndDepressions.Control.Services.Results;
-using System.Reflection;
+using PlainsAndDepressions.Control.Services.Services.Background;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
-    .AddMediatR(Assembly.GetExecutingAssembly())
+    .AddMediatR(typeof(PutDepressionsCommandHandler).Assembly)
     .AddScoped<IRequestHandler<PutPuckCommand, ControlledPackResult>, PutDepressionsCommandHandler>()
     ;
 
+builder.Services
+    .AddHostedService<RabbitMqListener>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PlainsAndDepressions.Control.Requests;
+using PlainsAndDepressions.Control.Contracts.Requests;
 using PlainsAndDepressions.Control.Services.Commands;
 
 namespace PlainsAndDepressions.Control.Controllers

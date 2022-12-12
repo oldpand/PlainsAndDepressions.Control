@@ -1,6 +1,6 @@
 ﻿using PlainsAndDepressions.Control.Contracts.Models;
 
-namespace PlainsAndDepressions.Control.Requests;
+namespace PlainsAndDepressions.Control.Contracts.Requests;
 
 public sealed class PutDepressionsRequest
 {
